@@ -1,0 +1,4 @@
+
+test:
+  script:
+    - echo "This pipeline has bee triggered"
