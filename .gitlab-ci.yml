@@ -1,5 +1,5 @@
 
-image: alpine
+image: ubuntu
 
 before_script:
   ##
