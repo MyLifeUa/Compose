@@ -53,7 +53,7 @@ before_script:
 deploy_staging:
   type: deploy
   script:
-    - scp . mylife@172.17.0.1:/home/mylife/compose
+    - scp -r $PWD mylife@172.17.0.1:/home/mylife
     - ssh mylife@172.17.0.1 "echo DONE && exit"
   only:
     - master
