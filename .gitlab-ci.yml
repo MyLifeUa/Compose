@@ -55,6 +55,6 @@ deploy_staging:
   script:
     - scp docker-compose.yml mylife@172.17.0.1:/home/mylife/compose/
     - scp django.env mylife@172.17.0.1:/home/mylife/compose/
-    - ssh mylife@172.17.0.1 "echo DONE && exit"
+    - ssh mylife@172.17.0.1 "cd /home/mylife/compose/ && docker-compose up -d && exit"
   only:
     - master
