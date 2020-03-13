@@ -53,7 +53,8 @@ before_script:
 deploy_staging:
   type: deploy
   script:
-    - scp -r $PWD mylife@172.17.0.1:/home/mylife
+    - scp docker-compose.yml mylife@172.17.0.1:/home/mylife/compose/
+    - scp django.env mylife@172.17.0.1:/home/mylife/compose/
     - ssh mylife@172.17.0.1 "echo DONE && exit"
   only:
     - master
