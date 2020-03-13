@@ -53,6 +53,7 @@ before_script:
 deploy_staging:
   type: deploy
   script:
-    - ssh mylife@mednat.ieeta.pt "echo DONE && exit"
+    - scp . mylife@172.17.0.1:/home/mylife/compose
+    - ssh mylife@172.17.0.1 "echo DONE && exit"
   only:
     - master
