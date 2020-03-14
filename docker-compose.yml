@@ -10,7 +10,20 @@ services:
   django:
     image: registry.gitlab.com/my-life-ua/rest-api
     env_file: django.env
+    environment:
+      - SECRET_KEY=#s6$ds9t*ui7@=2bt77h50w2g&i6n9p#krfb&03jk4v^%_5)i7.
+      - DATABASE_NAME=postgres
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
     ports:
       - "8000:8000"
     depends_on:
       - postgres
+  react:
+    image: registry.gitlab.com/my-life-ua/web-application
+    ports:
+      - "3000:3000"
+    depends_on:
+      - django
