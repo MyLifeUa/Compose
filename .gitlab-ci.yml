@@ -53,8 +53,9 @@ before_script:
 deploy_staging:
   type: deploy
   script:
-    - scp docker-compose.yml mylife@172.17.0.1:/home/mylife/compose/
-    - scp django.env mylife@172.17.0.1:/home/mylife/compose/
-    - ssh mylife@172.17.0.1 "cd /home/mylife/compose/ && docker-compose up -d && exit"
+    - echo 'Deploying...'
+    # - scp docker-compose.yml mylife@172.17.0.1:/home/mylife/compose/
+    # - scp django.env mylife@172.17.0.1:/home/mylife/compose/
+    # - ssh mylife@172.17.0.1 "cd /home/mylife/compose/ && docker-compose up -d && exit"
   only:
     - master
