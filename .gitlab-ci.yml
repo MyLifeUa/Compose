@@ -54,7 +54,8 @@ deploy_staging:
   type: deploy
   script:
     - echo 'Deploying...'
-    - ssh mylife@$HOST "mkdir /home/mylife/compose/ && exit"
+    # only needed the 1st time. after that crashes the pipeline.
+    # - ssh mylife@$HOST "mkdir /home/mylife/compose/ && exit"
     - scp docker-compose.yml mylife@$HOST:/home/mylife/compose/
     - scp django.env mylife@$HOST:/home/mylife/compose/
     # docker login sometimes fails. Run: sudo apt install gnupg2 pass
