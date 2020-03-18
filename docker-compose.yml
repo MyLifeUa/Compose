@@ -17,13 +17,13 @@ services:
       - DATABASE_PASSWORD=postgres
       - DATABASE_HOST=postgres
       - DATABASE_PORT=5432
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
     depends_on:
       - postgres
   react:
     image: registry.gitlab.com/my-life-ua/web-application
     ports:
-      - "3000:3000"
+      - "80:3000"
     depends_on:
       - django
