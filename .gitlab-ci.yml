@@ -54,8 +54,9 @@ deploy_staging:
   type: deploy
   script:
     - echo 'Deploying...'
-    # - scp docker-compose.yml mylife@172.17.0.1:/home/mylife/compose/
-    # - scp django.env mylife@172.17.0.1:/home/mylife/compose/
-    # - ssh mylife@172.17.0.1 "cd /home/mylife/compose/ && docker-compose up -d && exit"
+    - ssh mylife@$HOST "mkdir /home/mylife/compose/ && exit"
+    - scp docker-compose.yml mylife@$HOST:/home/mylife/compose/
+    - scp django.env mylife@$HOST:/home/mylife/compose/
+    - ssh mylife@$HOST "docker login registry.gitlab.com -u $GITLAB_USER_NAME -p $GITLAB_USER_PASSWORD && cd /home/mylife/compose/ && docker-compose up -d && exit"
   only:
     - master
