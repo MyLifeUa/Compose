@@ -20,7 +20,7 @@ services:
       - DATABASE_HOST=postgres
       - DATABASE_PORT=5432
     ports:
-      - "8442:8000"
+      - "8082:8000"
     depends_on:
       - postgres
     networks:
@@ -28,7 +28,7 @@ services:
   react:
     image: registry.gitlab.com/my-life-ua/web-application
     ports:
-      - "8441:3000"
+      - "8081:3000"
     depends_on:
       - django
     networks:
