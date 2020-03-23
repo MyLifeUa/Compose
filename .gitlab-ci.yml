@@ -59,6 +59,6 @@ deploy_staging:
     - scp django.env mylife@$HOST:/home/mylife/compose/
     # docker login sometimes fails. Run: sudo apt install gnupg2 pass. only necessary 1st time.
     # - ssh mylife@$HOST "docker login registry.gitlab.com -u $GITLAB_USER_NAME -p $GITLAB_USER_PASSWORD && exit"
-    - ssh mylife@$HOST "cd /home/mylife/compose/ && docker-compose up -d && exit"
+    - ssh mylife@$HOST "cd /home/mylife/compose/ && docker-compose pull && docker-compose up -d && exit"
   only:
     - master
