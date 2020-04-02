@@ -26,6 +26,12 @@ services:
       - django
     networks:
       - all
+  darkflow:
+    image: registry.gitlab.com/my-life-ua/ml-food-recognition
+    ports:
+      - "8082:5000"
+    networks:
+      - all
 
 networks:
   all:
