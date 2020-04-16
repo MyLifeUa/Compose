@@ -68,6 +68,16 @@ deploy_staging:
   only:
     - master
 
+django_make_migrations:
+  stage: post_deploy
+  only:
+    variables:
+      - $DJANGO_MAKE_MIGRATIONS
+  script:
+    - echo 'Making migrations django...'
+    - ssh mylife@$HOST "docker exec compose_django_1 python manage.py makemigrations && exit"
+    - echo 'Done'
+
 django_migrate:
   stage: post_deploy
   only:
