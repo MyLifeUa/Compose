@@ -75,5 +75,5 @@ django_migrate:
       - $DJANGO_MIGRATE
   script:
     - echo 'Migrating django...'
-    - ssh mylife@$HOST "docker exec -it compose_django_1 python manage.py migrate && exit"
+    - ssh mylife@$HOST "docker exec compose_django_1 python manage.py migrate && exit"
     - echo 'Done'
