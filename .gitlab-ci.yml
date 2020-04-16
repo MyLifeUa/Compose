@@ -71,8 +71,8 @@ deploy_staging:
 django_migrate:
   stage: post_deploy
   only:
-      variables:
-	- $DJANGO_MIGRATE
+    variables:
+      - $DJANGO_MIGRATE
   script:
     - echo 'Migrating django...'
     - ssh mylife@$HOST "docker exec -it compose_django_1 python manage.py migrate && exit"
