@@ -1,5 +1,9 @@
 image: ubuntu
 
+stages:
+  - deploy
+  - post_deploy
+
 before_script:
   ##
   ## Install ssh-agent if not already installed, it is required by Docker.
@@ -51,6 +55,7 @@ before_script:
 
 deploy_staging:
   type: deploy
+  stage: deploy
   script:
     - echo 'Deploying...'
     # only needed the 1st time. after that crashes the pipeline.
@@ -62,3 +67,13 @@ deploy_staging:
     - ssh mylife@$HOST "cd /home/mylife/compose/ && docker-compose pull && docker-compose up -d && exit"
   only:
     - master
+
+django_migrate:
+  stage: post_deploy
+  only:
+      variables:
+	- $DJANGO_MIGRATE
+  script:
+    - echo 'Migrating django...'
+    - ssh mylife@$HOST "docker exec -it compose_django_1 python manage.py migrate && exit"
+    - echo 'Done'
